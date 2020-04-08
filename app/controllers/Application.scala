@@ -9,8 +9,8 @@ import scala.concurrent.Future
 
 class Application @Inject()(wsClient: WSClient) extends InjectedController {
 
-  val randomNumUrl = "http://randnum.herokuapp.com"
-  val randomWordUrl = "http://random-word.herokuapp.com/"
+  val randomNumUrl = "https://random-num-weurlhfjnq-uc.a.run.app/"
+  val randomWordUrl = "https://random-word-weurlhfjnq-uc.a.run.app/"
 
   def index = Action.async {
     for {
