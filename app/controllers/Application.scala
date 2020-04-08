@@ -1,16 +1,18 @@
 package controllers
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
+import play.api.Configuration
 import play.api.libs.ws.WSClient
 import play.api.mvc._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Application @Inject()(wsClient: WSClient) extends InjectedController {
+@Singleton
+class Application @Inject()(wsClient: WSClient, config: Configuration) extends InjectedController {
 
-  val randomNumUrl = "https://random-num-weurlhfjnq-uc.a.run.app/"
-  val randomWordUrl = "https://random-word-weurlhfjnq-uc.a.run.app/"
+  val randomNumUrl = config.get[String]("random.num.url")
+  val randomWordUrl = config.get[String]("random.word.url")
 
   def index = Action.async {
     for {
